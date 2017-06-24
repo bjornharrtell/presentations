@@ -1,6 +1,6 @@
 # JSTS
 
-A port of Java Topology Suite<!-- .element: class="fragment" -->
+A port of Java Topology Suite
 
 Note:
 Hello everyone. This is a talk about JSTS, a port of the Java Topology Suite.
@@ -9,9 +9,9 @@ Hello everyone. This is a talk about JSTS, a port of the Java Topology Suite.
 
 # About me
 
-* Björn Harrtell <!-- .element: class="fragment" -->
-* Sweden, Malmö <!-- .element: class="fragment" -->
-* Programmer and GIS consultant at Sweco Position <!-- .element: class="fragment" -->
+* Björn Harrtell 
+* Sweden, Malmö 
+* Programmer and GIS consultant at Sweco Position 
 
 Note:
 My name is Björn Harrtell and I come from a town in Sweden called Malmö. If you never heard of Malmö, it's the town connected to Copenhagen by a bridge.
@@ -22,10 +22,10 @@ I have worked in this field for almost ten years but this is my FOSS4G so I'm ha
 
 # Java Topology Suite
 
-* A Java geometry library implementing various alorithms <!-- .element: class="fragment" -->
-![JTS](example-intersection.gif)<!-- .element: class="fragment" -->
-* Dates back to 2002 <!-- .element: class="fragment" -->
-* Used in Open Source GIS software like QGIS, PostGIS and GeoTools <!-- .element: class="fragment" -->
+* A Java geometry library implementing various alorithms 
+![JTS](assets/example-intersection.gif)
+* Dates back to 2002 
+* Used in Open Source GIS software like QGIS, PostGIS and GeoTools 
 
 Note:
 As many of you probably know Java Topology Suite is a Java geometry library implementing various alorithms. It can for example calculate the intersection of two polygons like in this image I found on an old JTS web page. JTS dates back to 2002 and has been used in Open Source GIS software like Quantum GIS, PostGIS and GeoTools.
@@ -34,10 +34,10 @@ As many of you probably know Java Topology Suite is a Java geometry library impl
 
 # Due credit
 
-![Martin Davis](martin_davis.jpg "Martin Davis")<!-- .element: class="fragment" -->
+![Martin Davis](martin_davis.jpg "Martin Davis")
 
-* Martin Davis, founder of JTS project<!-- .element: class="fragment" -->
-* Recieved the Sol Katz award in 2011<!-- .element: class="fragment" -->
+* Martin Davis, founder of JTS project
+* Recieved the Sol Katz award in 2011
 
 Note:
 I want to give due credit to Martin Davis. He founded the JTS project and recieved the Sol Katz award in 2011.
@@ -46,10 +46,10 @@ I want to give due credit to Martin Davis. He founded the JTS project and reciev
 
 # JTS ports
 
-* C++ (GEOS, used in PostGIS) <!-- .element: class="fragment" -->
-* Python (Shapely) <!-- .element: class="fragment" -->
-* C# (NTS) <!-- .element: class="fragment" -->
-* JavaScript (JSTS) <!-- .element: class="fragment" -->
+* C++ (GEOS, used in PostGIS) 
+* Python (Shapely) 
+* C# (NTS) 
+* JavaScript (JSTS) 
 
 Note:
 JTS has been ported to C++, Python, C# and with JSTS also JavaScript.
@@ -58,8 +58,8 @@ JTS has been ported to C++, Python, C# and with JSTS also JavaScript.
 
 # JSTS history
 
-* 2011 <!-- .element: class="fragment" -->
-* Manual effort <!-- .element: class="fragment" -->
+* 2011 
+* Manual effort 
 
 Note:
 I started work on JSTS back in 2011 and it was a manual effort.
@@ -70,7 +70,7 @@ My motivation to do it was mainly that I was curious if it was possible. I didn'
 
 # Small beginnings
 
-## Java version <!-- .element: class="fragment" -->
+## Java version 
 ```java
 public Coordinate(double x, double y, double z) {
   this.x = x;
@@ -78,16 +78,16 @@ public Coordinate(double x, double y, double z) {
   this.z = z;
 }
 ```
-<!-- .element: class="fragment" -->
 
-## JavaScript version <!-- .element: class="fragment" -->
+
+## JavaScript version 
 ```js
 jsts.geom.Coordinate = function(x, y) {
   this.x = x;
   this.y = y;
 };
 ```
-<!-- .element: class="fragment" -->
+
 
 Note:
 A central class in JTS is of course the Coordinate class, which has a constructor that looks like this. Converting Coordinate to JavaScript is trivial and this is in the first commited code to JSTS in 2011 where I ignore the z-axis. A namespace is simulated with a JavaScript object called jsts.
@@ -96,10 +96,10 @@ A central class in JTS is of course the Coordinate class, which has a constructo
 
 # Working implementation
 
-* August 2011 - 0.9.0 <!-- .element: class="fragment" -->
-* 158 files, ~ 30 000 lines of code <!-- .element: class="fragment" -->
-* Test cases from JTS was critical <!-- .element: class="fragment" -->
-* Selective port of Java collection classes <!-- .element: class="fragment" -->
+* August 2011 - 0.9.0 
+* 158 files, ~ 30 000 lines of code 
+* Test cases from JTS was critical 
+* Selective port of Java collection classes 
 
 Note:
 The initial working version required porting 158 files. If I had known this was required for basic functionality I probably wouldn't have bothered to start so perhaps sometimes ignorance is a good thing.
@@ -112,11 +112,11 @@ Half way into the working implementation I realized alot of work was spent rewri
 
 # The road to JSTS 1.0
 
-* Wanted to update JSTS to upstream but not manually <!-- .element: class="fragment" -->
-* Issue "Automated port" opened at GitHub in May 2015 <!-- .element: class="fragment" -->
-* Rapid progress early 2016 <!-- .element: class="fragment" -->
-* First beta release january 2016 <!-- .element: class="fragment" -->
-* 1.0.0 released february 2016 <!-- .element: class="fragment" -->
+* Wanted to update JSTS to upstream but not manually 
+* Issue "Automated port" opened at GitHub in May 2015 
+* Rapid progress early 2016 
+* First beta release january 2016 
+* 1.0.0 released february 2016 
 
 Note:
 Fast forward to last year 2015. Existing JSTS lagged behind upstream, so I wanted to update it but not manually.
@@ -133,7 +133,7 @@ I made rapid progress early 2016 with stable release done one month later.
 
 # Existing tools
 
-* Google Web Toolkit (GWT) <!-- .element: class="fragment" -->
+* Google Web Toolkit (GWT) 
 
 Note:
 I first started to look at existing tools. The most known Java to JavaScript compiler is probably Google Web Toolkit, but it produces obfuscated JavaScript that does not preserve the API from the Java source which I want in JSTS. I looked at some other alternatives but could only conclude that there was no existing tool that could do it.
@@ -142,10 +142,10 @@ I first started to look at existing tools. The most known Java to JavaScript com
 
 # Learning stuff
 
-* ES6 (aka. ECMAScript 2015) <!-- .element: class="fragment" -->
-* Transpilation via Abstract Syntax Trees<!-- .element: class="fragment" -->
-* ESTree (JavaScript syntax tree spec in JSON) <!-- .element: class="fragment" -->
-* Was it possible to translate JTS to JavaScript using transpilation? <!-- .element: class="fragment" -->
+* ES6 (aka. ECMAScript 2015) 
+* Transpilation via Abstract Syntax Trees
+* ESTree (JavaScript syntax tree spec in JSON) 
+* Was it possible to translate JTS to JavaScript using transpilation? 
 
 Note:
 In 2015 I learned about ES6, the new version of JavaScript and that it could be transpiled to whatever version of JavaScript that existing browsers expects. The transpilation works with something called abstract syntax trees. Syntax trees have a long history since they are used in compilers and are also useful for integrated development environments to enable features like autocompletion. For JavaScript there is a syntax tree representation called ESTree in JSON.
@@ -156,11 +156,11 @@ Learning about this stuff made me think that perhaps it was possible to use synt
 
 # Java parsing
 
-* Eclipse JDT <!-- .element: class="fragment" -->
-* java2estree <!-- .element: class="fragment" -->
-* ESTree representation in Scala <!-- .element: class="fragment" -->
-* JSON serializer (Jackson) <!-- .element: class="fragment" -->
-* ESTree to JavaScript (Astring) <!-- .element: class="fragment" -->
+* Eclipse JDT 
+* java2estree 
+* ESTree representation in Scala 
+* JSON serializer (Jackson) 
+* ESTree to JavaScript (Astring) 
 
 Note:
 To be able to do transpilation I would need to parse Java into a syntax tree. After some searching I realized an integrated development environment like Eclipse must have this to provide code completion and syntax checking. It's perhaps not the normal use of the Eclipse JDT, but it can be used as a stand alone library to parse Java without the GUI parts of Eclipse.
@@ -173,8 +173,8 @@ Now I had something that could translate Java into ESTree JSON. To convert ESTre
 
 # Difficulties
 
-* Java class != ES6 class <!-- .element: class="fragment" -->
-* Overloading <!-- .element: class="fragment" -->
+* Java class != ES6 class 
+* Overloading 
 
 Note:
 At first I thought ES6 would be a good target for the transformation because it introduces classes with similar syntax as Java to JavaScript. I managed to get a partial working port with ES6 classes as a target but it had bugs and ugly workarounds. It turns out classes in Java and ES6 have small but important differences.
@@ -293,9 +293,9 @@ It also turned out that performance was actually alot worse than old JSTS 0.x un
 
 # Stable release
 
-* After release candidate 7 - failing 1 test out of 508 <!-- .element: class="fragment" -->
-* IsValid failure <!-- .element: class="fragment" -->
-* DoubleBits manual port <!-- .element: class="fragment" -->
+* After release candidate 7 - failing 1 test out of 508 
+* IsValid failure 
+* DoubleBits manual port 
 
 Note:
 After release candidate 7 I was failing only one test out of 508. The failing test was for the IsValid operation for a specific geometry. The reason for this faulure turned out to be DoubleBits, a class in JTS that uses bit manipulation to get better accuracy for some mathematical operations and for this it uses some functions in the Java virtual machine that are not available in JavaScript. So, in the end I had to manually port DoubleBits. I guess that means I actually failed my goal to create an automated port so an almost automated port will have to do for now.
