@@ -23,7 +23,7 @@ I have worked in this field for almost ten years but this is my FOSS4G so I'm ha
 # Java Topology Suite
 
 * A Java geometry library implementing various alorithms <!-- .element: class="fragment" -->
-![JTS](example-intersection.gif "JTS")<!-- .element: class="fragment" -->
+![JTS](example-intersection.gif)<!-- .element: class="fragment" -->
 * Dates back to 2002 <!-- .element: class="fragment" -->
 * Used in Open Source GIS software like QGIS, PostGIS and GeoTools <!-- .element: class="fragment" -->
 
