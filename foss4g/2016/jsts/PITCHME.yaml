@@ -1,2 +1,3 @@
-horz-delim : ^\n\n\n
-horz-delim-regexp : ^\n\n\n
+horz-delim : --
+vert-delim : ^\n\n\n
+vert-delim-regexp : ^\n\n\n
