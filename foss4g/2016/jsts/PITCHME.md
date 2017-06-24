@@ -13,17 +13,11 @@ Hello everyone. This is a talk about JSTS, a port of the Java Topology Suite.
 * Sweden, Malmö 
 * Programmer and GIS consultant at Sweco Position 
 
-Note:
-My name is Björn Harrtell and I come from a town in Sweden called Malmö. If you never heard of Malmö, it's the town connected to Copenhagen by a bridge.
-
-I have worked in this field for almost ten years but this is my FOSS4G so I'm happy to finally be here and I look forward to the rest of the conference.
-
 ---
 
 # Java Topology Suite
 
-* A Java geometry library implementing various alorithms 
-![JTS](assets/example-intersection.gif)
+* A Java geometry library implementing various algorithms ![JTS](assets/example-intersection.gif)
 * Dates back to 2002 
 * Used in Open Source GIS software like QGIS, PostGIS and GeoTools 
 
@@ -34,7 +28,7 @@ As many of you probably know Java Topology Suite is a Java geometry library impl
 
 # Due credit
 
-![Martin Davis](martin_davis.jpg "Martin Davis")
+![Martin Davis](assets/martin_davis.jpg)
 
 * Martin Davis, founder of JTS project
 * Recieved the Sol Katz award in 2011
@@ -79,7 +73,6 @@ public Coordinate(double x, double y, double z) {
 }
 ```
 
-
 ## JavaScript version 
 ```js
 jsts.geom.Coordinate = function(x, y) {
@@ -87,7 +80,6 @@ jsts.geom.Coordinate = function(x, y) {
   this.y = y;
 };
 ```
-
 
 Note:
 A central class in JTS is of course the Coordinate class, which has a constructor that looks like this. Converting Coordinate to JavaScript is trivial and this is in the first commited code to JSTS in 2011 where I ignore the z-axis. A namespace is simulated with a JavaScript object called jsts.
@@ -181,7 +173,6 @@ At first I thought ES6 would be a good target for the transformation because it 
 
 ---
 
-<!-- -- data-transition="fade" -->
 ```js
 export default class Coordinate {
   constructor(...args) {
@@ -225,7 +216,6 @@ The initial translated Coordinate class constructor in beta 1 looked quite terri
 
 ---
 
-<!-- -- data-transition="fade" -->
 ```js
 export default class Coordinate {
   constructor(...args) {
@@ -258,7 +248,6 @@ At beta 4 I was able to reduce the number of wrapper functions, but it still has
 
 ---
 
-<!-- -- data-transition="fade" -->
 ```js
 export default function Coordinate() {
   this.x = null;
@@ -280,9 +269,6 @@ export default function Coordinate() {
   }
 }
 ```
-.<br>
-.<br>
-.<br>
 
 Note:
 At release candidate 3 I reached the version used in the stable version which drops ES6 classes. This code is almost readable and you can see the constructor logic that expects zero arguments calls itself initalizing the Coordinate to 0,0.
