@@ -1,4 +1,4 @@
-# JSTS
+## JSTS
 
 A port of Java Topology Suite
 
@@ -7,7 +7,7 @@ Hello everyone. This is a talk about JSTS, a port of the Java Topology Suite.
 
 ---
 
-# About me
+## About me
 
 * Björn Harrtell 
 * Sweden, Malmö 
@@ -15,7 +15,7 @@ Hello everyone. This is a talk about JSTS, a port of the Java Topology Suite.
 
 ---
 
-# Java Topology Suite
+## Java Topology Suite
 
 * A Java geometry library implementing various algorithms ![JTS](assets/example-intersection.gif)
 * Dates back to 2002 
@@ -26,7 +26,7 @@ As many of you probably know Java Topology Suite is a Java geometry library impl
 
 ---
 
-# Due credit
+## Due credit
 
 ![Martin Davis](assets/martin_davis.jpg)
 
@@ -38,19 +38,19 @@ I want to give due credit to Martin Davis. He founded the JTS project and reciev
 
 ---
 
-# JTS ports
+## JTS ports
 
 * C++ (GEOS, used in PostGIS) 
 * Python (Shapely) 
-* C# (NTS) 
+* C## (NTS) 
 * JavaScript (JSTS) 
 
 Note:
-JTS has been ported to C++, Python, C# and with JSTS also JavaScript.
+JTS has been ported to C++, Python, C## and with JSTS also JavaScript.
 
 ---
 
-# JSTS history
+## JSTS history
 
 * 2011 
 * Manual effort 
@@ -62,9 +62,9 @@ My motivation to do it was mainly that I was curious if it was possible. I didn'
 
 ---
 
-# Small beginnings
+## Small beginnings
 
-## Java version 
+### Java version 
 ```java
 public Coordinate(double x, double y, double z) {
   this.x = x;
@@ -73,7 +73,7 @@ public Coordinate(double x, double y, double z) {
 }
 ```
 
-## JavaScript version 
+### JavaScript version 
 ```js
 jsts.geom.Coordinate = function(x, y) {
   this.x = x;
@@ -86,7 +86,7 @@ A central class in JTS is of course the Coordinate class, which has a constructo
 
 ---
 
-# Working implementation
+## Working implementation
 
 * August 2011 - 0.9.0 
 * 158 files, ~ 30 000 lines of code 
@@ -102,7 +102,7 @@ Half way into the working implementation I realized alot of work was spent rewri
 
 ---
 
-# The road to JSTS 1.0
+## The road to JSTS 1.0
 
 * Wanted to update JSTS to upstream but not manually 
 * Issue "Automated port" opened at GitHub in May 2015 
@@ -119,11 +119,11 @@ I made rapid progress early 2016 with stable release done one month later.
 
 ---
 
-# How was it done?
+## How was it done?
 
 ---
 
-# Existing tools
+## Existing tools
 
 * Google Web Toolkit (GWT) 
 
@@ -132,7 +132,7 @@ I first started to look at existing tools. The most known Java to JavaScript com
 
 ---
 
-# Learning stuff
+## Learning stuff
 
 * ES6 (aka. ECMAScript 2015) 
 * Transpilation via Abstract Syntax Trees
@@ -146,7 +146,7 @@ Learning about this stuff made me think that perhaps it was possible to use synt
 
 ---
 
-# Java parsing
+## Java parsing
 
 * Eclipse JDT 
 * java2estree 
@@ -163,7 +163,7 @@ Now I had something that could translate Java into ESTree JSON. To convert ESTre
 
 ---
 
-# Difficulties
+## Difficulties
 
 * Java class != ES6 class 
 * Overloading 
@@ -277,7 +277,7 @@ It also turned out that performance was actually alot worse than old JSTS 0.x un
 
 ---
 
-# Stable release
+## Stable release
 
 * After release candidate 7 - failing 1 test out of 508 
 * IsValid failure 
@@ -288,6 +288,6 @@ After release candidate 7 I was failing only one test out of 508. The failing te
 
 ---
 
-# Thanks for listening
+## Thanks for listening
 
 * https://github.com/bjornharrtell/jsts
