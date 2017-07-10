@@ -17,7 +17,7 @@ Hello everyone. This is a talk about JSTS, a port of the Java Topology Suite.
 
 ## Java Topology Suite
 
-![JTS](assets/example-intersection.png)
+![JTS](assets/images/example-intersection.png)
 
 * A Java geometry library implementing various algorithms
 * Dates back to 2002 
@@ -30,7 +30,7 @@ As many of you probably know Java Topology Suite is a Java geometry library impl
 
 ## Due credit
 
-![Martin Davis](assets/martin_davis.jpg)
+![Martin Davis](assets/images/martin_davis.jpg)
 
 * Martin Davis, founder of JTS project
 * Recieved the Sol Katz award in 2011
