@@ -17,7 +17,9 @@ Hello everyone. This is a talk about JSTS, a port of the Java Topology Suite.
 
 ## Java Topology Suite
 
-* A Java geometry library implementing various algorithms ![JTS](assets/example-intersection.png)
+![JTS](assets/example-intersection.png)
+
+* A Java geometry library implementing various algorithms
 * Dates back to 2002 
 * Used in Open Source GIS software like QGIS, PostGIS and GeoTools 
 
