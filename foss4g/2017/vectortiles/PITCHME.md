@@ -13,14 +13,14 @@ Might know me as the author of the JavaScript port of JTS called JSTS.
 
 ---
 
-### Subject
+## Subject
 
 * JavaScript library to manipulate topological data
 * Ported from PostGIS Topology implementation
 
 ---
 
-### Typical topological data
+## Typical topological data
 
 * Road networks built from nodes and edges
 * Administrative or geographic areas adding the concept of surfaces or faces
@@ -30,7 +30,7 @@ Geographical data that we see today is often a collection of individual points, 
 
 ---
 
-### Prior art
+## Prior art
 
 * [ESRI ArcInfo Coverage format](http://desktop.arcgis.com/en/arcmap/10.3/manage-data/coverages/what-is-a-coverage.htm)
 * [Oracle Spatial topology](https://docs.oracle.com/cd/B19306_01/appdev.102/b14256/sdo_topo_concepts.htm)
@@ -49,7 +49,7 @@ TopoJSON was developed my Mike Bostock who I'm sure you have heard of as he is t
 
 ---
 
-### Why?
+## Why?
 
 * Why a JavaScript library to manipulate topological data?
 * For fun
@@ -60,7 +60,7 @@ Like JSTS, I made topolis by porting existing code and as an experiment to see h
 
 ---
 
-### Demonstration
+## Demonstration
 
 * [OpenLayers example](http://openlayers.org)
 
@@ -69,13 +69,13 @@ Incomplete https://github.com/bjornharrtell/topolis/blob/master/src/edge.js#L677
 
 ---
 
-### How?
+## How?
 
 * Manual work
 * Uses JSTS for some of the needed geometrical algorithms
 
 ---
 
-### Is it done yet?
+## Is it done yet?
 
 * No
