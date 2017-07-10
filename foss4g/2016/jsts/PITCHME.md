@@ -66,7 +66,7 @@ My motivation to do it was mainly that I was curious if it was possible. I didn'
 
 ## Small beginnings
 
-### Java version 
+#### Java version 
 ```java
 public Coordinate(double x, double y, double z) {
   this.x = x;
@@ -75,7 +75,7 @@ public Coordinate(double x, double y, double z) {
 }
 ```
 
-### JavaScript version 
+#### JavaScript version 
 ```js
 jsts.geom.Coordinate = function(x, y) {
   this.x = x;
