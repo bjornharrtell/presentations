@@ -6,7 +6,7 @@
 
 * Björn Harrtell
 * Septima P/S
-* [JSTS](http://bjornharrtell.github.io/jsts/)
+* [JSTS](http://bjornharrtell.github.io/jsts)
 
 Note:
 Might know me as the author of the JavaScript port of JTS called JSTS.
@@ -22,24 +22,25 @@ Might know me as the author of the JavaScript port of JTS called JSTS.
 
 ### Typical topological data
 
+* Built from simple geometry but with toplogical constraints
 * Road networks built from nodes and edges
-* Administrative or geographic areas adding the concept of surfaces or faces
+* Can add the concept of surfaces or faces for administrative or geographic areas
 
 Note:
-Geographical data that we see today is often a collection of individual points, lines or polygons without topological relation. This is a simple model but can cause quality issues if 
+Simple geometry is usually invidiual points, lines or polygons.
 
 ---
 
 ### Prior art
 
-* [ESRI ArcInfo Coverage format](http://desktop.arcgis.com/en/arcmap/10.3/manage-data/coverages/what-is-a-coverage.htm)
-* [Oracle Spatial topology](https://docs.oracle.com/cd/B19306_01/appdev.102/b14256/sdo_topo_concepts.htm)
-* [PostGIS Topology](http://postgis.net/docs/manual-2.3/Topology.html)
-* [TopoJSON](https://github.com/topojson/topojson/wiki)
- - [Awesome dynamic simplification](https://bl.ocks.org/mbostock/6245977)
+* <a target="_blank" href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/coverages/what-is-a-coverage.htm">ESRI ArcInfo Coverage format</a>
+* <a target="_blank" href="https://docs.oracle.com/cd/B19306_01/appdev.102/b14256/sdo_topo_concepts.htm">Oracle Spatial topology</a>
+* <a target="_blank" href="http://postgis.net/docs/manual-2.3/Topology.html">PostGIS Topology</a>
+* <a target="_blank" href="https://github.com/topojson/topojson/wiki">TopoJSON</a>
+ - <a target="_blank" href="https://bl.ocks.org/mbostock/6245977">Awesome dynamic simplification</a>
 
 Note:
-The earliest implementation of topological data structure for geographical purposes that I know if was created by ESRI and included in their now discontinoued product ArcInfo. The implementation and format which was called "coverage" was never publicly documented and ESRI themselves seems to have given up on handling topological data.
+The earliest implementation of topological data structure for geographical purposes that I know if was created by ESRI and included in their now discontinoued product ArcInfo. The implementation and format which was called "coverage" was never publicly documented and ESRI decided not to pursue an implementation in newer products.
 
 A standardized effort was made in the 90ies by OGC and implemented by Oracle as part of their Oracle Spatial offering. Their publicly available documentation is a good technical source of how topological data works and how the model is implemented in detail.
 
@@ -51,31 +52,47 @@ TopoJSON was developed my Mike Bostock who I'm sure you have heard of as he is t
 
 ### Why?
 
-* Why a JavaScript library to manipulate topological data?
-* For fun
-* Client based "offline" editing of topological data
+* Scratch itch to learn PostGIS topology implementation
+* Edit topological data without server communication
 
-Note:
-Like JSTS, I made topolis by porting existing code and as an experiment to see how well it could work. But it might become useful for cases where you need to have a pure client based logic, for instance if the client needs to work in offline mode.
+---
+
+### API
+
+* Show API docs, side by side with PostGIS Topology
 
 ---
 
 ### Demonstration
 
-* [OpenLayers example](http://openlayers.org)
+* <a target="_blank" href="http://openlayers.org">OpenLayers example</a>
 
 Note: 
-Incomplete https://github.com/bjornharrtell/topolis/blob/master/src/edge.js#L677
+Demonstrate creating an edge, a face, splitting a face and deleting an edge.
+Demonstrate the missing feature to heal edges, show https://github.com/bjornharrtell/topolis/blob/master/src/edge.js#L677.
 
 ---
 
 ### How?
 
 * Manual work
-* Uses JSTS for some of the needed geometrical algorithms
+* Depends on rbush from MapBox/@mourner
+ - getNodeByPoint, getEdgeByPoint, getEdgesByLine, getFaceByPoint
+* Depends on JSTS for some of the needed geometrical algorithms
+ - intersects, polygonize
+
+Note:
+Would like to replace JSTS with something more light weight.
 
 ---
 
 ### Is it done yet?
 
 * No
+* Port the remaining functions from PostGIS
+* Port the unit tests from PostGIS
+* Big one: Find a solution to serialize partial topology
+
+Note:
+
+Explain what I mean with partial topology. Topology is essentially a graph structure. If it's very large you'd like to be able to fetch a subset of the graph, modify and be able to send back to the source.
