@@ -9,14 +9,19 @@
 * [JSTS](http://bjornharrtell.github.io/jsts)
 
 Note:
-Might know me as the author of the JavaScript port of JTS called JSTS.
+Present myself.
+I'm the author of the JavaScript port of Java Topology Suite called JSTS, used in amongst other things Turf from MapBox.
 
 ---
 
 ### Subject
 
+* Topolis
 * JavaScript library to manipulate topological data
 * Ported from PostGIS Topology implementation
+
+Note:
+So this presentation is about a small side project of mine called Topolis.
 
 ---
 
@@ -24,10 +29,11 @@ Might know me as the author of the JavaScript port of JTS called JSTS.
 
 * Built from simple geometry but with toplogical constraints
 * Road networks built from nodes and edges
-* Can add the concept of surfaces or faces for administrative or geographic areas
+* Add the concept face (surface) commonly used for administrative or geographic areas
 
 Note:
-Simple geometry is usually invidiual points, lines or polygons.
+Simple geometry is usually defined as individiual points, lines or polygons.
+An example of a toplogical contraint is that no edge may overlap another edge.
 
 ---
 
@@ -40,7 +46,7 @@ Simple geometry is usually invidiual points, lines or polygons.
  - <a target="_blank" href="https://bl.ocks.org/mbostock/6245977">Awesome dynamic simplification</a>
 
 Note:
-The earliest implementation of topological data structure for geographical purposes that I know if was created by ESRI and included in their now discontinoued product ArcInfo. The implementation and format which was called "coverage" was never publicly documented and ESRI decided not to pursue an implementation in newer products.
+The earliest implementation of topological data structure for geographical purposes that I know if was created by ESRI and included in their now discontinoued product ArcInfo. The implementation and format which was called "coverage" and was kept as a trade secret.
 
 A standardized effort was made in the 90ies by OGC and implemented by Oracle as part of their Oracle Spatial offering. Their publicly available documentation is a good technical source of how topological data works and how the model is implemented in detail.
 
@@ -59,7 +65,8 @@ TopoJSON was developed my Mike Bostock who I'm sure you have heard of as he is t
 
 ### API
 
-* Show API docs, side by side with PostGIS Topology
+* [Topolis](https://bjornharrtell.github.io/topolis/0.2.0/apidocs/)
+* [PostGIS](http://postgis.net/docs/manual-2.3/Topology.html)
 
 ---
 
@@ -91,8 +98,8 @@ Would like to replace JSTS with something more light weight.
 * No
 * Port the remaining functions from PostGIS
 * Port the unit tests from PostGIS
-* Big one: Find a solution to serialize partial topology
+* Big one: Find a solution to work with partial topology
 
 Note:
 
-Explain what I mean with partial topology. Topology is essentially a graph structure. If it's very large you'd like to be able to fetch a subset of the graph, modify and be able to send back to the source.
+Explain what I mean with partial topology.
