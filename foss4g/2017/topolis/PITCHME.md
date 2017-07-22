@@ -89,7 +89,7 @@ Demonstrate the missing feature to heal edges, show https://github.com/bjornharr
  - intersects, polygonize
 
 Note:
-Would like to replace JSTS with something more light weight.
+Would like to replace JSTS with something more light weight, but it not trivial.
 
 ---
 
