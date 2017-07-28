@@ -1,3 +1,10 @@
 .reveal {
   font-size: 38px !important;
 }
+
+.reveal section img {
+  margin: -4px;
+  background: none;
+  border: none;
+  box-shadow: none;
+}

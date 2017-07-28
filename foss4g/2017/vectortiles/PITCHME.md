@@ -1,17 +1,25 @@
-## PostGIS + Vector Tiles
+## PostGIS ♥ Protobuf
 
 ---
 
 ### Introduction
 
-* Björn Harrtell
-* Septima P/S
+* Björn Harrtell, Sweden
+* Septima, Denmark
+
+Note:
+At Septima I work as a geospatial developer.
 
 ---
 
 ### Subject
 
-* Encoding MapBox Vector Tiles with PostGIS inside the database
+* Encoding Mapbox Vector Tiles in PostGIS
+* Bonus: Encoding Geobuf in PostGIS
+* Both formats derive from Google Protobuf
+
+Note:
+Especially vector tiles has seen a rise in popularity.
 
 ---
 
@@ -21,10 +29,16 @@
 
 ---
 
-### Why encode MVT in PostGIS?
+### Why encode vector tiles in PostGIS?
 
-* Reduce I/O for potential performance wins
+* Custom projections
 * Simplify toolchain
+* Reduce I/O for potential performance wins
+
+Note:
+Main reason was that existing toolchains only supported spherical mercator.
+Middleware requires I/O and (de)serialization.
+So I thought why not do it as a PostGIS function.
 
 ---
 
@@ -34,12 +48,12 @@
 * [ST_AsMVT](https://postgis.net/docs/manual-dev/ST_AsMVT.html)
 
 Note:
-At first I had only ST_AsMVT but at some point MapBox developer Blake Thompson informed me that
+At first I had only ST_AsMVT but at some point a Mapbox developer Blake Thompson informed me that
 the MVT specification require geometry to be OGC valid and in a specific orientation. So I reworked the
 implementation into these two functions to make it explicit that there is a geometry transformation step
 which is most likely also the most computation intensive step because it includes checking and correcting geometry validity.
 
-MapBox has their own library https://github.com/mapbox/wagyu to support the needed geometry transformation which would be interesting to integrate into PostGIS but not trivial as it's written in a modern variant of C++.
+Mapbox has their own library https://github.com/mapbox/wagyu to support the needed geometry transformation which would be interesting to integrate into PostGIS but not trivial as it's written in a modern variant of C++.
 
 ---
 
@@ -69,9 +83,23 @@ If there was an option to output raw binary I would not need the script that was
 * [protobuf-c](https://github.com/protobuf-c/protobuf-c)
 * [vector-tile-spec](https://github.com/mapbox/vector-tile-spec/tree/master/2.1)
 * Pitch the idea and a POC on the postgis-devel list to get interest
-* Talk Paul Ramsey out of having to make the code cunit testable
-* Get sponsoring from CartoDB
-* Don't mention I'm really a JavaScript developer
+* Talk Paul Ramsey out of having to make the code unit testable
+* Get sponsoring from Carto
+
+Note:
+Arguments against unit testable code was probably pretty weak but at least Paul
+did not say it was unacceptable. :)
+
+### Additional how
+
+* Don't mention I'm really mostly a JavaScript developer
+* Regression tests
+* Code is small and tidy
+* Millions of tiles has been created
+
+Note:
+Might explain why I couldn't make the code unit testable and got into some troubles
+during the implementation.
 
 ---
 
@@ -89,3 +117,7 @@ If there was an option to output raw binary I would not need the script that was
 
 Note:
 Show GeoDanmark data on an ortho in EPSG:25832
+
+### End!
+
+* https://twitter.com/bjornharrtell
