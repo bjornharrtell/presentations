@@ -118,6 +118,8 @@ during the implementation.
 Note:
 Show GeoDanmark data on an ortho in EPSG:25832
 
+---
+
 ### End!
 
-* https://twitter.com/bjornharrtell
+![Logo](assets/images/twitter.png) @bjornharrtell
