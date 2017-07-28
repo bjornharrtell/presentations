@@ -103,3 +103,9 @@ Would like to replace JSTS with something more light weight, but it not trivial.
 Note:
 
 Explain what I mean with partial topology.
+
+---
+
+### End!
+
+![Logo](assets/images/twitter.png) [@bjornharrtell](https://twitter.com/bjornharrtell)

@@ -122,4 +122,4 @@ Show GeoDanmark data on an ortho in EPSG:25832
 
 ### End!
 
-![Logo](assets/images/twitter.png) @bjornharrtell
+![Logo](assets/images/twitter.png) [@bjornharrtell](https://twitter.com/bjornharrtell)
