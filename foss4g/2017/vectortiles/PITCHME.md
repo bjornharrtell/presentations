@@ -1,4 +1,4 @@
-## PostGIS ♥ Protobuf
+## PostGIS <span style="color:#ff0000">♥</span> Protobuf
 
 ---
 
