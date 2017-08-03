@@ -179,4 +179,4 @@ did not say it was unacceptable. :)
 
 ### End!
 
-![Image](./assets/md/assets/twitter.png)
+![Logo](assets/images/twitter.png) [@bjornharrtell](https://twitter.com/bjornharrtell)
