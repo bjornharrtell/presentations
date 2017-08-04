@@ -16,10 +16,10 @@ At Septima I work as a geospatial developer.
 
 * Encoding Protobuf formats in PostGIS
 * Mapbox Vector Tiles (lossy)
-* Bonus: Geobuf (lossless)
+* Geobuf (lossless)
 
 Note:
-This talk is about a upcomming feature in PostGIS 2.4 to support outputting data in two Protobuf based formats.
+This talk is about a upcoming feature in PostGIS 2.4 to support outputting data in two Protobuf based formats, Mapbox Vector Tiles and Geobuf.
 
 Protobuf is a binary encoding specification from Google for structured data. Simplified I think it can perhaps be seen as a binary equivalent of XML.
 
@@ -121,23 +121,23 @@ psql -At \
 ```
 
 Note:
-SQL is a backwards language to lets begin from the bottom.
+We have ST_AsMVT with 'land' as layer name, extent 512 which is the "resolution" of the vector tile, the name of the geometry column in the input rows and then the rows to aggregate.
 
-We're requiring that geometry is not null, which can happen due to small geometries collapsing because they are smaller than a tile coordinate pixel.
+Note that we're requiring that geometry is not null, which can happen due to small geometries collapsing because they are smaller than a tile coordinate pixel.
 
-Then we filter on a bbox which should be the geometric bounds of the tile. If we where to use a tile buffer (to fix boundary render bugs) we would need to add that too here.
+The subquery filters input geometry on a bbox which should be the geometric bounds of the tile. If we where to use a tile buffer (to fix boundary render issues) we would need to add that to this bbox.
 
-Then we specify the source table foss4g.ne_50m_land_3857 and run its geometries through ST_AsMVTGeom. ST_AsMVTGeom also needs the geometric bounds of the tile but should not include any buffer. 512 is the resolution of the tile, 0 buffer and true to have it clip the geometries.
-
-I then run the result through ST_AsMVT.
+Then we have the source table foss4g.ne_50m_land_3857 and the call to ST_AsMVTGeom. ST_AsMVTGeom also needs the geometric bounds of the tile but should not include any buffer. Again we have to specify the resolution of the tile (512), a buffer of 0 and last parameter is true to have it clip the geometries on the tile boundary + buffer.
 
 Now I can use mvtile.sql with psql to query for the first quadrant tile of the world.
 
 Note that psql does not output raw binary, it's in hex encoded format so I use the xxd command to decode it to raw binary.
 
-* Show tile in OpenLayers
-* Generate rest of the tiles and show
-* Switch styling
+* https://bjornharrtell.github.io/presentations/vectortiles/example1/ - first quadrant tile
+* https://bjornharrtell.github.io/presentations/vectortiles/example2/ - four tiles with OL 4.0
+* https://bjornharrtell.github.io/presentations/vectortiles/example3/ - render tiles in other zoom level (new for OL 4.2)
+* https://bjornharrtell.github.io/presentations/vectortiles/example4/ - extent 4096
+* https://bjornharrtell.github.io/presentations/vectortiles/example5/ - random fill color
 
 ---
 
