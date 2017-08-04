@@ -19,13 +19,13 @@
       format: new ol.format.MVT(),
       tileGrid: ol.tilegrid.createXYZ({ minZoom: 1, maxZoom: 1 }),
       overlaps: false,
-      tilePixelRatio: 16,
+      tilePixelRatio: 2,
       url: `{z}/{x}/{y}.pbf`
     })
 
     var style = function(f) {
-      //const color = "#"+((1<<24)*Math.random()|0).toString(16)
-      const color = "#666666"
+      const color = "#"+((1<<24)*Math.random()|0).toString(16)
+      //const color = "#666666"
       return new ol.style.Style({
         fill: new ol.style.Fill({
           color
