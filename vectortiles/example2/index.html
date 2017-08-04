@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mapbox Vector Tiles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.0/ol.css" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.0/ol.js"></script>
+  <style>
+    .map {
+      background: #f8f4f0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map" class="map"></div>
+  <script>
+    var MvtSource = new ol.source.VectorTile({
+      format: new ol.format.MVT(),
+      tileGrid: ol.tilegrid.createXYZ({ minZoom: 1, maxZoom: 1 }),
+      overlaps: false,
+      tilePixelRatio: 2,
+      url: `{z}/{x}/{y}.pbf`
+    })
+
+    var style = function(f) {
+      //const color = "#"+((1<<24)*Math.random()|0).toString(16)
+      const color = "#666666"
+      return new ol.style.Style({
+        fill: new ol.style.Fill({
+          color
+        })
+      })
+    }
+
+    var map = new ol.Map({
+      layers: [
+        new ol.layer.VectorTile({
+          source: MvtSource,
+          style
+        }),
+        new ol.layer.Tile({
+          source: new ol.source.TileDebug({
+            projection: 'EPSG:3857',
+            tileGrid: MvtSource.getTileGrid(),
+            wrapX: true
+          })
+        })
+      ],
+      target: 'map',
+      view: new ol.View({
+        center: [0, 0],
+        zoom: 1
+      })
+    })
+  </script>
+</body>
+
+</html>
