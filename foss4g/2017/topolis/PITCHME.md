@@ -4,13 +4,13 @@
 
 ### Introduction
 
-* Björn Harrtell
-* Septima P/S
+* Björn Harrtell, Sweden
+* Septima, Denmark
 * [JSTS](http://bjornharrtell.github.io/jsts)
 
 Note:
-Present myself.
-I'm the author of the JavaScript port of Java Topology Suite called JSTS, used in amongst other things Turf from MapBox.
+At Septima I work as a geospatial developer.
+I'm also the author of the JavaScript port of Java Topology Suite called JSTS, used in amongst other things Turf from Mapbox.
 
 ---
 
@@ -20,19 +20,19 @@ I'm the author of the JavaScript port of Java Topology Suite called JSTS, used i
 * JavaScript library to manipulate topological data
 * Ported from PostGIS Topology implementation
 
-Note:
-So this presentation is about a small side project of mine called Topolis.
-
 ---
 
 ### Typical topological data
 
-* Built from simple geometry but with toplogical constraints
 * Road networks built from nodes and edges
+* Topology is built from simple geometry but with toplogical constraints
 * Add the concept face (surface) commonly used for administrative or geographic areas
 
 Note:
-Simple geometry is usually defined as individiual points, lines or polygons.
+So what is topological data? Most common is probably road networks build from nodes and edges, like OpenStreetMap.
+
+Simple geometry is usually defined as individiual points (node), lines (edge) or polygons.
+
 An example of a toplogical contraint is that no edge may overlap another edge.
 
 ---
@@ -51,14 +51,15 @@ The earliest implementation of topological data structure for geographical purpo
 A standardized effort was made in the 90ies by OGC and implemented by Oracle as part of their Oracle Spatial offering. Their publicly available documentation is a good technical source of how topological data works and how the model is implemented in detail.
 
 PostGIS, or rather core developer Sandro Santilli, implemented the same model as of verison 2.0. The documentation is of reference nature and assumes knowledge of topological concepts, but the implementation is roboust and has a large suite of unit tests verifying correctness.
+It also has an additional construct called TopoGeometry that's too much to explain here but should not be ignored if you want to use and learn about PostGIS Topology.
 
-TopoJSON was developed my Mike Bostock who I'm sure you have heard of as he is the author of d3. He created TopoJSON as an efficient storage format but also for correct visualization. Let's look at his awesome dynamic simplification example (it's not an animation!)
+TopoJSON was developed my Mike Bostock who I'm sure you have heard of. Amonst other things he is the author of d3. He created TopoJSON as an efficient storage format but also for correct visualization. Let's look at his awesome dynamic simplification example (it's not an animation!)
 
 ---
 
 ### Why?
 
-* Scratch itch to learn PostGIS topology implementation
+* Scratch itch to learn more about the PostGIS Topology implementation
 * Edit topological data without server communication
 
 ---
@@ -82,18 +83,18 @@ Demonstrate the missing feature to heal edges, show https://github.com/bjornharr
 
 ### How?
 
-* Manual work
-* Depends on rbush from MapBox/@mourner
+* Entirely a manual port
+* Depends on [rbush](https://github.com/mourner/rbush) from MapBox/@mourner
  - getNodeByPoint, getEdgeByPoint, getEdgesByLine, getFaceByPoint
-* Depends on JSTS for some of the needed geometrical algorithms
- - intersects, polygonize
+* Depends on [JSTS](https://github.com/bjornharrtell/jsts) for some of the needed geometrical algorithms
+ - relate, intersects, polygonize
 
 Note:
 Would like to replace JSTS with something more light weight, but it not trivial.
 
 ---
 
-### Is it done yet?
+### Is it ready?
 
 * No
 * Port the remaining functions from PostGIS
@@ -102,7 +103,9 @@ Would like to replace JSTS with something more light weight, but it not trivial.
 
 Note:
 
-Explain what I mean with partial topology.
+I think at least porting the remaining functions and more complete testing is needed before using topolis in the real world.
+
+Explain what I mean with partial topology. Can still be useful but will basically only work with small topologies.
 
 ---
 
