@@ -1,0 +1,10 @@
+body {
+  font-size: 1em;
+}
+
+hr {
+  display: block;
+  page-break-before: always;
+  break-before: always;
+  border: none;
+}
