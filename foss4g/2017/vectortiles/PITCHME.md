@@ -19,9 +19,9 @@ At Septima I work as a geospatial developer.
 * Geobuf (lossless)
 
 Note:
-This talk is about a upcoming feature in PostGIS 2.4 to support outputting data in two Protobuf based formats, Mapbox Vector Tiles and Geobuf.
+This talk is about a upcoming feature in PostGIS 2.4 to support outputting data in two Protobuf based formats, Mapbox Vector Tiles and Geobuf. It's important to note that vector tiles is a lossy format where as Geobuf is lossless.
 
-Protobuf is a binary encoding specification from Google for structured data. Simplified I think it can perhaps be seen as a binary equivalent of XML.
+Protobuf is a binary encoding specification from Google for structured data and I think that it can perhaps be seen as a binary equivalent of XML.
 
 ---
 
@@ -34,25 +34,21 @@ Protobuf is a binary encoding specification from Google for structured data. Sim
 Note:
 A few years back I had an assigment to build a mobile client with offline support and the ability to download and handle many layers of vector data for which vector tiles seemed the best available choice because it's optimized for rendering and size. A requirement was to use a swedish reference system.
 
-So my main reason to look into encoding vector tiles was that existing toolchains only supported spherical mercator and was relatively complex.
+So my main reason to look into the details of encoding vector tiles was to support custom projections.
 
-I did hack my own toolchain in Java at one point and while it worked I wasn't happy to maintain it.
+I did hack my own toolchain in Java at one point and while it worked I wasn't happy to maintain it. So I was interested in a more simple toolchain.
 
-Middleware requires I/O and (de)serialization.
-
-So I thought why not do this directly in PostGIS.
+It bothered me that toolchains was essentially middleware requiring I/O and serialization of the source data, so I thought why not do this directly in PostGIS to simplify and reduce I/O.
 
 ---
 
-### Two new functions
+### Two new functions for vector tiles
 
-* <a target="_blank" href="https://postgis.net/docs/manual-dev/ST_AsMVTGeom.html">ST_AsMVTGeom</a>
-* <a target="_blank" href="https://postgis.net/docs/manual-dev/ST_AsMVT.html">ST_AsMVT</a>
+* [ST_AsMVTGeom](https://postgis.net/docs/manual-dev/ST_AsMVTGeom.html)
+* [ST_AsMVT](https://postgis.net/docs/manual-dev/ST_AsMVT.html)
 
 Note:
-At first I only had ST_AsMVT but at some point a Mapbox developer Blake Thompson informed me that
-the MVT specification require geometry to be OGC valid and in a specific orientation. Even if your
-input geometry is valid it can become invalid when converted to the local coordinate space of a vector tile.
+The two new functions for vector tiles are ST_AsMVT and ST_ASMVTGeom.
 
 * Show the docs, show the vector tile specification
 
@@ -60,16 +56,15 @@ ST_AsMVTGeom is used to transform a geometry into tile coordinate space.
 
 ST_AsMVT is an aggregate function to encode a set of rows with transformed geometry + attributes into the binary vector tiles format.
 
-The initial version of ST_AsMVT took a SQL string as input and queried it internally. It was Paul's suggestion to make it an aggregate function which required some deep diving into PostgreSQL internals.
+The initial version of ST_AsMVT took a SQL string as input and queried it internally. It was Paul's suggestion to make it an aggregate function which required some deep diving into Postgres internals.
 
-So I reworked the implementation into these two functions to make it explicit that there is a geometry transformation step
-which is most likely also the most computation intensive step because it includes checking and correcting geometry validity.
+The initial implementation was only a single function, ST_AsMVT, but at some point Blake Thompson from Mapbox informed me that the vector tile specification require geometry to be OGC valid and even if your input geometry is valid it can become invalid when transformed to the local coordinate space of a vector tile. So I reworked the implementation and split it into two functions to make it explicit that there is a geometry transformation step. This has the additional benefit that ST_AsMVTGeom should be able to take advantage of the new Postgres parallel capabilities, though I have not tested this myself.
 
-Mapbox has their own library https://github.com/mapbox/wagyu to support the needed geometry transformation. It would be interesting to integrate into PostGIS but not trivial as it's written in a modern variant of C++.
+I use PostGIS functions that in turn uses GEOS for ST_AsMVTGeom to clip and correct geometries. Mapbox has their own library https://github.com/mapbox/wagyu with similar functionality. I think it would be interesting to integrate this into PostGIS at some point with the potential of being quite a bit faster.
 
 ---
 
-### Bonus function
+### Function for Geobuf
 
 * <a target="_blank" href="https://postgis.net/docs/manual-dev/ST_AsGeobuf.html">ST_AsGeobuf</a>
 * Similar to GeoJSON but more compact
@@ -84,11 +79,6 @@ Can be a useful alternative to GeoJSON when you need larger volumes of data on t
 ### Demonstration
 
 * Basic usage
-
-Note:
-* Show sample data (EPSG:3857) in QGIS.
-* Show a simple as possible script to produce four tiles.
-* Show the tiles with a simple OpenLayers viewer.
 
 ---
 
@@ -121,7 +111,9 @@ psql -At \
 ```
 
 Note:
-We have ST_AsMVT with 'land' as layer name, extent 512 which is the "resolution" of the vector tile, the name of the geometry column in the input rows and then the rows to aggregate.
+This is what I used to produce the examples shown.
+
+For the SQL part we have ST_AsMVT with 'land' as layer name, extent 512 which is the "resolution" of the vector tile, the name of the geometry column in the input rows and then the rows to aggregate.
 
 Note that we're requiring that geometry is not null, which can happen due to small geometries collapsing because they are smaller than a tile coordinate pixel.
 
@@ -133,34 +125,40 @@ Now I can use mvtile.sql with psql to query for the first quadrant tile of the w
 
 Note that psql does not output raw binary, it's in hex encoded format so I use the xxd command to decode it to raw binary.
 
-* https://bjornharrtell.github.io/presentations/vectortiles/example1/ - first quadrant tile
-* https://bjornharrtell.github.io/presentations/vectortiles/example2/ - four tiles with OL 4.0
-* https://bjornharrtell.github.io/presentations/vectortiles/example3/ - render tiles in other zoom level (new for OL 4.2)
-* https://bjornharrtell.github.io/presentations/vectortiles/example4/ - extent 4096
-* https://bjornharrtell.github.io/presentations/vectortiles/example5/ - random fill color
+---
+
+### Results
+
+* [Single tile](https://bjornharrtell.github.io/presentations/vectortiles/example1)
+* [Four tiles with OL 4.0](https://bjornharrtell.github.io/presentations/vectortiles/example2)
+* [Four tiles with OL 4.2](https://bjornharrtell.github.io/presentations/vectortiles/example3)
+* [Higher resolution](https://bjornharrtell.github.io/presentations/vectortiles/example4)
+* [Random fill color](https://bjornharrtell.github.io/presentations/vectortiles/example5)
 
 ---
 
-### PostgreSQL COPY
+### Postgres details
 
+* Why not COPY?
 * Does not output raw binary
 * *"The binary file format consists of a file header, zero or more tuples containing the row data, and a file trailer. Headers and data are in network byte order."*
+* Use a PG driver and read the binary directly for optimal use
 
 Note:
-One might wonder if/why I'm not using the PostgreSQL COPY command. It's because it does not output raw binary.
+You might ask why I'm not using the COPY command and it's because COPY does not output raw binary, it has headers.
 
-If there was an option to output raw binary I would not need the script that was demonstrated previously, I could simply output the tiles directly from PL/pgSQL. Perhaps an opportunity for a future contribution?
+If there was an option to output raw binary I could simply output the tiles directy. Perhaps an opportunity for a future contribution?
 
-The current optimal way to use ST_AsMVT is through a PostgreSQL driver where you can read the binary directly.
+So, the current optimal way to use ST_AsMVT is through a Postgres driver where you can read the binary directly.
 
 ---
 
 ### How?
 
-* <a target="_blank" href="https://github.com/protobuf-c/protobuf-c">protobuf-c</a>
-* <a target="_blank" href="https://github.com/mapbox/vector-tile-spec/tree/master/2.1">vector-tile-spec</a>
+* [protobuf-c](https://github.com/protobuf-c/protobuf-c)
+* [vector-tile-spec](https://github.com/mapbox/vector-tile-spec/tree/master/2.1)
 * Pitch the idea and a POC on the postgis-devel list to get interest
-* Talk Paul Ramsey out of having to make the code unit testable
+* Talk Paul Ramsey out of having to make the code unit testable (!)
 * Get sponsoring from Carto
 * Regression tests
 
@@ -172,7 +170,7 @@ did not say it was unacceptable. :)
 
 ### Future development
 
-* Use https://github.com/mapbox/wagyu in PostGIS
+* Investigate use of https://github.com/mapbox/wagyu
 * Encourage use of ST_AsMVT in tile servers like t-rex
 
 ---

@@ -10,14 +10,14 @@
 
 Note:
 At Septima I work as a geospatial developer.
-I'm also the author of the JavaScript port of Java Topology Suite called JSTS, used in amongst other things Turf from Mapbox.
+I'm also the author of JSTS, the JavaScript port of Java Topology Suite, used in amongst other things Turf from Mapbox.
 
 ---
 
 ### Subject
 
-* Topolis
-* JavaScript library to manipulate topological data
+* Topolis JavaScript library
+* Can manipulate topological data
 * Ported from PostGIS Topology implementation
 
 ---
@@ -26,40 +26,47 @@ I'm also the author of the JavaScript port of Java Topology Suite called JSTS, u
 
 * Road networks built from nodes and edges
 * Topology is built from simple geometry but with toplogical constraints
-* Add the concept face (surface) commonly used for administrative or geographic areas
+* Add the concept face (surface) suitable to represent for example administrative areas
 
 Note:
-So what is topological data? Most common is probably road networks build from nodes and edges, like OpenStreetMap.
+Some words about what typical topological data is.
 
-Simple geometry is usually defined as individiual points (node), lines (edge) or polygons.
+Most common is probably road networks build from nodes and edges, like OpenStreetMap.
+
+Topology is built from simple geometry but with toplogical constraints.
+
+Simple geometry is usually defined as individiual points, lines or polygons.
 
 An example of a toplogical contraint is that no edge may overlap another edge.
+
+It's also possible to add the concept face (surface) suitable to represent for example administrative areas.
 
 ---
 
 ### Prior art
 
-* <a target="_blank" href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/coverages/what-is-a-coverage.htm">ESRI ArcInfo Coverage format</a>
-* <a target="_blank" href="https://docs.oracle.com/cd/B19306_01/appdev.102/b14256/sdo_topo_concepts.htm">Oracle Spatial topology</a>
-* <a target="_blank" href="http://postgis.net/docs/manual-2.3/Topology.html">PostGIS Topology</a>
-* <a target="_blank" href="https://github.com/topojson/topojson/wiki">TopoJSON</a>
- - <a target="_blank" href="https://bl.ocks.org/mbostock/6245977">Awesome dynamic simplification</a>
+* [ESRI ArcInfo Coverage format](http://desktop.arcgis.com/en/arcmap/10.3/manage-data/coverages/what-is-a-coverage.htm)
+* [Oracle Spatial topology](https://docs.oracle.com/cd/B19306_01/appdev.102/b14256/sdo_topo_concepts.htm)
+* [PostGIS Topology](http://postgis.net/docs/manual-2.3/Topology.html)
+* [TopoJSON](https://github.com/topojson/topojson/wiki)
+ - [Awesome dynamic simplification](https://bl.ocks.org/mbostock/6245977)
 
 Note:
-The earliest implementation of topological data structure for geographical purposes that I know if was created by ESRI and included in their now discontinoued product ArcInfo. The implementation and format which was called "coverage" and was kept as a trade secret.
+Topological data and capable software has been around for a long time.
 
-A standardized effort was made in the 90ies by OGC and implemented by Oracle as part of their Oracle Spatial offering. Their publicly available documentation is a good technical source of how topological data works and how the model is implemented in detail.
+One of the earliest implementations in this area that I know if was created by ESRI and was a part of their now discontinued product ARC/INFO. The implementation and format which was called "coverage" and was kept as a trade secret. The official story is that the current product line more or less has replaced the functionality that was available with ARC/INFO but I argue that it does not.
 
-PostGIS, or rather core developer Sandro Santilli, implemented the same model as of verison 2.0. The documentation is of reference nature and assumes knowledge of topological concepts, but the implementation is roboust and has a large suite of unit tests verifying correctness.
-It also has an additional construct called TopoGeometry that's too much to explain here but should not be ignored if you want to use and learn about PostGIS Topology.
+The next implementation I'm aware of is the result of a standardized effort which was made in the 90ies by OGC and implemented by Oracle as part of their Oracle Spatial offering. The publicly available documentation is a good technical source of how topological data works and how the model is implemented in detail.
 
-TopoJSON was developed my Mike Bostock who I'm sure you have heard of. Amonst other things he is the author of d3. He created TopoJSON as an efficient storage format but also for correct visualization. Let's look at his awesome dynamic simplification example (it's not an animation!)
+Then we have PostGIS which implemented the same model as of version 2. I have used it many times and in my opinion it's a very roboust implementation with a large suite of unit and regression tests verifying correctness.
+
+Lastly we have TopoJSON which was was developed my Mike Bostock, the creator of d3 which I'm sure you have heard of. He created TopoJSON as an efficient storage format but also for correct visualization. Let's look at his awesome dynamic simplification example (it's not an animation!)
 
 ---
 
 ### Why?
 
-* Scratch itch to learn more about the PostGIS Topology implementation
+* Scratch an itch to learn more about the PostGIS Topology implementation
 * Edit topological data without server communication
 
 ---
@@ -73,7 +80,7 @@ TopoJSON was developed my Mike Bostock who I'm sure you have heard of. Amonst ot
 
 ### Demonstration
 
-* <a target="_blank" href="http://openlayers.org">OpenLayers example</a>
+* [OpenLayers example](http://openlayers.org)
 
 Note: 
 Demonstrate creating an edge, a face, splitting a face and deleting an edge.
@@ -84,7 +91,7 @@ Demonstrate the missing feature to heal edges, show https://github.com/bjornharr
 ### How?
 
 * Entirely a manual port
-* Depends on [rbush](https://github.com/mourner/rbush) from MapBox/@mourner
+* Depends on [rbush](https://github.com/mourner/rbush) from Mapbox/@mourner
  - getNodeByPoint, getEdgeByPoint, getEdgesByLine, getFaceByPoint
 * Depends on [JSTS](https://github.com/bjornharrtell/jsts) for some of the needed geometrical algorithms
  - relate, intersects, polygonize
