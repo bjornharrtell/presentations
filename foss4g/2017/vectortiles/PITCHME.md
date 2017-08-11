@@ -177,6 +177,4 @@ did not say it was unacceptable. :)
 
 ### End!
 
-![Logo](assets/images/twitter.png)
-
-<span>![Logo](assets/images/twitter.png)</span><span>[@bjornharrtell](https://twitter.com/bjornharrtell)</span>
+![Twitter](https://raw.githubusercontent.com/bjornharrtell/presentations/master/assets/images/twitter.png) [@bjornharrtell](https://twitter.com/bjornharrtell)
