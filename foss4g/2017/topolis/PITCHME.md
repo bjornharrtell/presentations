@@ -118,4 +118,11 @@ Explain what I mean with partial topology. Can still be useful but will basicall
 
 ### End!
 
-![Logo](assets/images/twitter.png) [@bjornharrtell](https://twitter.com/bjornharrtell)
+<p>
+<span>
+<img src="https://raw.githubusercontent.com/bjornharrtell/presentations/master/assets/images/twitter.png" alt="Twitter">
+</span>
+<span>
+<a href="https://twitter.com/bjornharrtell">@bjornharrtell</a>
+</span>
+</p>
