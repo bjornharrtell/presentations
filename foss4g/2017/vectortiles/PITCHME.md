@@ -177,4 +177,5 @@ did not say it was unacceptable. :)
 
 ### End!
 
-![Twitter](https://raw.githubusercontent.com/bjornharrtell/presentations/master/assets/images/twitter.png) [@bjornharrtell](https://twitter.com/bjornharrtell)
+<img src="https://raw.githubusercontent.com/bjornharrtell/presentations/master/assets/images/twitter.png" alt="Twitter">
+<a href="https://twitter.com/bjornharrtell">@bjornharrtell</a>
