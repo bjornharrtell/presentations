@@ -177,5 +177,11 @@ did not say it was unacceptable. :)
 
 ### End!
 
+<p>
+<span>
 <img src="https://raw.githubusercontent.com/bjornharrtell/presentations/master/assets/images/twitter.png" alt="Twitter">
+</span>
+<span>
 <a href="https://twitter.com/bjornharrtell">@bjornharrtell</a>
+</span>
+</p>
