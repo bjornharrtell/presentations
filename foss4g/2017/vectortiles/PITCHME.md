@@ -177,4 +177,4 @@ did not say it was unacceptable. :)
 
 ### End!
 
-![Logo](assets/images/twitter.png) [@bjornharrtell](https://twitter.com/bjornharrtell)
+![Logo](assets/images/twitter.png) <a href="https://twitter.com/bjornharrtell">@bjornharrtell</a>
