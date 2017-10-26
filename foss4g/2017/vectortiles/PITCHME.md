@@ -1,5 +1,7 @@
 ## PostGIS <span style="color:#ff0000">♥</span> Protobuf
 
+Revised October 26, 2017.
+
 ---
 
 ### Introduction
@@ -19,7 +21,9 @@ At Septima I work as a geospatial developer.
 * Geobuf (lossless)
 
 Note:
-This talk is about a upcoming feature in PostGIS 2.4 to support outputting data in two Protobuf based formats, Mapbox Vector Tiles and Geobuf. It's important to note that vector tiles is a lossy format where as Geobuf is lossless.
+This talk is about a new feature in PostGIS 2.4 to support outputting data in two Protobuf based formats, Mapbox Vector Tiles and Geobuf.
+
+It's important to note that vector tiles is a lossy format where as Geobuf is lossless.
 
 Protobuf is a binary encoding specification from Google for structured data and I think that it can perhaps be seen as a binary equivalent of XML.
 
@@ -42,8 +46,8 @@ It bothered me that toolchains was essentially middleware requiring I/O and seri
 
 ### Two new functions for vector tiles
 
-* [ST_AsMVTGeom](https://postgis.net/docs/manual-dev/ST_AsMVTGeom.html)
-* [ST_AsMVT](https://postgis.net/docs/manual-dev/ST_AsMVT.html)
+* [ST_AsMVTGeom](https://postgis.net/docs/ST_AsMVTGeom.html)
+* [ST_AsMVT](https://postgis.net/docs/ST_AsMVT.html)
 
 Note:
 The two new functions for vector tiles are ST_AsMVT and ST_ASMVTGeom.
@@ -62,7 +66,7 @@ The initial implementation was only a single function, ST_AsMVT. Due to good inp
 
 ### Function for Geobuf
 
-* [ST_AsGeobuf](https://postgis.net/docs/manual-dev/ST_AsGeobuf.html)
+* [ST_AsGeobuf](https://postgis.net/docs/ST_AsGeobuf.html)
 * Similar to GeoJSON but more compact
 
 Note:
@@ -81,13 +85,13 @@ Can be a useful alternative to GeoJSON when you need larger volumes of data on t
 ### mvtile.sql
 
 ```sql
-SELECT ST_AsMVT('land', 512, 'geom', q)
+SELECT ST_AsMVT(q)
 FROM (SELECT
   id,
   ST_AsMVTGeom(
-    geometry, 
-    ST_MakeEnvelope(:xmin,:ymin,:xmax,:ymax,3857),
-    512, 0, true
+    geometry,
+    ST_MakeBox2D(ST_Point(:xmin,:ymin), ST_Point(:xmax,:ymax)),
+    512
   ) AS geom
 FROM foss4g.ne_50m_land_3857
 WHERE
