@@ -1,7 +1,5 @@
 ## PostGIS <span style="color:#ff0000">♥</span> Protobuf
 
-Revised October 26, 2017.
-
 ---
 
 ### Introduction
