@@ -136,8 +136,8 @@ Note that psql does not output raw binary, it's in hex encoded format so I use t
 ### Postgres details
 
 * Why not COPY?
-* Does not output raw binary
-* Optional use is through PG driver
+* COPY does not output raw binary
+* Optimal use is through PG driver
 
 Note:
 You might ask why I'm not using the COPY command and it's because COPY does not output raw binary, it add header data.
