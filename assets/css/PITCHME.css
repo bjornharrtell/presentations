@@ -2,9 +2,23 @@
   font-size: 38px !important;
 }
 
+.reveal, .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5  {
+  color: white;
+}
+
+.reveal a {
+  color: lightblue;
+}
+
 .reveal section img {
   margin: -4px;
   background: none;
   border: none;
   box-shadow: none;
+}
+
+body {
+  background: #649F8E;
+  background: -webkit-radial-gradient();
+  background: radial-gradient();
 }

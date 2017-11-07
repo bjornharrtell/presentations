@@ -1,11 +1,13 @@
-## PostGIS <span style="color:#ff0000">♥</span> Protobuf
+<div style="text-align: right; margin-right: 5em">
 
----
+<h2> PostGIS <span style="color:#ff0000">♥</span> Protobuf</h2>
 
-### Introduction
+<br>
 
-* Björn Harrtell, Sweden
-* Septima, Denmark
+<h4>BJÖRN HARRTELL</h4>
+<h4>SEPTIMA</h4>
+
+</div>
 
 Note:
 At Septima I work as a geospatial developer.
@@ -42,6 +44,18 @@ It bothered me that toolchains was essentially middleware requiring I/O and seri
 
 ---
 
+### Function for Geobuf
+
+* [ST_AsGeobuf](https://postgis.net/docs/ST_AsGeobuf.html)
+* Similar to GeoJSON but more compact
+
+Note:
+I've also implemented ST_AsGeobuf, which I actually did before vector tiles because while also based on protobuf it's a more simple encoding so was a good start for me.
+
+Can be a useful alternative to GeoJSON when you need larger volumes of data on the client side. Can complement vector tiles for when you need lossless access to the original source data.
+
+---
+
 ### Two new functions for vector tiles
 
 * [ST_AsMVTGeom](https://postgis.net/docs/ST_AsMVTGeom.html)
@@ -59,24 +73,6 @@ ST_AsMVT is an aggregate function to encode a set of rows with transformed geome
 ST_AsMVT was in initial proof of concept not an aggregate function, it took a plain SQL string as input and queried it internally. Having plain SQL strings as parameters is bad for many reasons of course and Paul suggested that I try to make it into aggregate function. That did indeed require some deep diving into Postgres internals.
 
 The initial implementation was only a single function, ST_AsMVT. Due to good input from Blake Thompson at Mapbox about the importance of a strict geometry transformation step I reworked the implementation and split it into these two functions to make the transformation step explicit. This has the additional benefit that you should be able to take advantage of the new Postgres parallel capabilities, though I haven't tested this myself.
-
----
-
-### Function for Geobuf
-
-* [ST_AsGeobuf](https://postgis.net/docs/ST_AsGeobuf.html)
-* Similar to GeoJSON but more compact
-
-Note:
-I've also implemented ST_AsGeobuf, which I actually did before vector tiles because while also based on protobuf it's a more simple encoding so was a good start for me.
-
-Can be a useful alternative to GeoJSON when you need larger volumes of data on the client side. Can complement vector tiles for when you need lossless access to the original source data.
-
----
-
-### Basic use
-
-* Create the four tiles of zoom level 1 in spherical mercator
 
 ---
 
