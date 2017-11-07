@@ -152,7 +152,7 @@ So, the current optimal way to use ST_AsMVT is through a Postgres driver where y
 
 * [protobuf-c](https://github.com/protobuf-c/protobuf-c)
 * [vector-tile-spec](https://github.com/mapbox/vector-tile-spec/tree/master/2.1)
-* Pitch the idea and a POC on the postgis-devel list to get interest
+* Pitch the idea and a POC on the postgis-devel list
 * Sponsoring from CARTO (thank you!)
 * Get away with no proper unit tests (!)
 * At least a somewhat complete regression test suite
