@@ -15,19 +15,19 @@ At Septima I work as a geospatial developer.
 
 ### Shapefile first tweet
 
-![shp_first](assets/shp_first.png)
+![shp_first](assets/images/shp_first.png)
 
 ---
 
 ### Once upon a time at twitter
 
-![fight](assets/fight.png)
+![fight](assets/images/fight.png)
 
 ---
 
 ### Once upon a time at twitter
 
-![fgb_first](assets/fgb_first.png)
+![fgb_first](assets/images/fgb_first.png)
 
 ---
 
