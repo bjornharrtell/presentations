@@ -19,9 +19,27 @@ At Septima I work as a geospatial developer.
 
 ---
 
+### Reddit
+
+<iframe class="stretch" data-src="https://www.reddit.com/r/QGIS/comments/bfzqgc/a_future_without_the_shapefile/"></iframe>
+
+---
+
+### github.io
+
 <iframe class="stretch" data-src="https://bjornharrtell.github.io/flatgeobuf/"></iframe>
 
 ---
+
+### Twitter
+
+@tweet[https://twitter.com/shapefiIe/status/1054451201620828166]
+
+@tweet[https://twitter.com/Donny_V/status/917454086479470594]
+
+@tweet[https://twitter.com/shapefiIe/status/743846709772574720]
+
+@tweet[https://twitter.com/bjornharrtell/status/795879353863274496]
 
 ### End!
 
