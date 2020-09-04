@@ -33,6 +33,8 @@ At Septima I work as a geospatial developer.
 
 ### Twitter
 
+<iframe class="stretch" data-src="https://twitter.com/shapefiIe/status/1054451201620828166"></iframe>
+
 @tweet[https://twitter.com/shapefiIe/status/1054451201620828166]
 
 @tweet[https://twitter.com/Donny_V/status/917454086479470594]
