@@ -3,23 +3,34 @@ marp: true
 ---
 
 # GitHub@Septima
+##### https://github.com/Septima (and some other places)
+
+---
+
+# What is Git
+
+* A version control system that tracks versions of files
+* Made by Linus Torvalds (git means "unpleasant person") in 2005
+* Works well for text files for example source code
+* Works less well for binary files (but can handle them to some extent)
+* Distributed
 
 ---
 
 # What is GitHub
 
-* Centralized git and associated project management
-* Launched 2008 rapid growth from ~2010
+* Centralized Git hosting, issue tracking and project management
+* Launched 2008 with rapid growth from ~2010 due to free tier and open source popularity
 * Bought by Microsoft in 2018 (yay!)
-* Takes one of the best things with Git (distributed versioning) and makes it centralized (yay!)
 
 ---
 
 # Why do we use GitHub?
 
-* Centralized versioned storage/management of (mostly) text and code
+* We need centralized Git hosting, issue tracking and project management
 * One of two places that we have blessed with proper backup of what we produce (the other one is Google Drive)
-* Simple issue tracking (aka. poor mans project management)
+* Provides versioned traceability of the work we do and allows documenting why specific work has been done
+* Issue tracking (aka. poor man's project management)
 * Project management ("larger" projects)
 
 ---
@@ -35,12 +46,19 @@ marp: true
 ## Answer:
 
 * No.
-* Use an editor/IDE with good git and possibly GitHub integration
-* Do not use GitHub plain in browser UI for git stuff
+* Learn Git to the extent that is required for your work
 
 ---
 
-# What do we not use at Github?
+## Suggestions:
+
+* Use an editor/IDE with good Git and possibly GitHub integration
+* Do not use GitHub plain in browser UI for git stuff
+* Do not fear git command line tools
+
+---
+
+# What do we *not* use at GitHub?
 
 * Wiki
 * Git LFS (large file storage)
@@ -51,11 +69,11 @@ marp: true
 # Best practices
 
 * Keep it simple
-* Use branch protection
+* Use branch protection (not rules)
 * Use issues + pull requests
 
 ## If project isn't exceptionally large
 
-* One repository
+* One project - one repository
 * Simple issue tracking (no project management)
 * Project name = system name = host name (if applicable)
