@@ -46,7 +46,7 @@ marp: true
 ## Answer:
 
 * No.
-* Learn Git to the extent that is required for your work
+* Learn Git (to some extent)
 
 ---
 
@@ -77,3 +77,13 @@ marp: true
 * One project - one repository
 * Simple issue tracking (no project management)
 * Project name = system name = host name (if applicable)
+
+---
+
+# Honorable mentions
+
+* https://github.com/Septima/it-sikkerhed - Because security is always most important
+* https://github.com/Septima/septima.github.com - This is https://septima.dk/
+* https://github.com/Septima/drift - When a customer want us to host things with some SLA
+
+* https://github.com/Septima/qgis-flow - Most stable software at the firm
