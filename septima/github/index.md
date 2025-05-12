@@ -1,5 +1,10 @@
 ---
 marp: true
+theme: default
+style: |
+  section {
+    font-size: 2em;
+  }
 ---
 
 # GitHub@Septima
@@ -22,6 +27,10 @@ marp: true
 * Centralized Git hosting, issue tracking and project management
 * Launched 2008 with rapid growth from ~2010 due to free tier and open source popularity
 * Bought by Microsoft in 2018 (yay!)
+* Main competitors
+  * GitLab
+  * BitBucket / Jira
+  * Azure DevOps
 
 ---
 
@@ -69,21 +78,24 @@ marp: true
 # Best practices
 
 * Keep it simple
-* Use branch protection (not rules)
-* Use issues + pull requests
+* Use/require issues + pull requests
+* Passwords belong in BitWarden not GitHub
 
-## If project isn't exceptionally large
+---
+
+#  Best practices
+## For projects not exceptionally large
 
 * One project - one repository
 * Simple issue tracking (no project management)
-* Project name = system name = host name (if applicable)
+* Project name = system name = host name in URL (if applicable)
 
 ---
 
 # Honorable mentions
 
-* https://github.com/Septima/it-sikkerhed - Because security is always most important
+* https://github.com/Septima/it-sikkerhed - Because security
 * https://github.com/Septima/septima.github.com - This is https://septima.dk/
-* https://github.com/Septima/drift - When a customer want us to host things with some SLA
+* https://github.com/Septima/drift - All self hosted operational things (test, prod, SLA)
 
 * https://github.com/Septima/qgis-flow - Most stable software at the firm
